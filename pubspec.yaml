@@ -1,0 +1,138 @@
+name: tunaf_country_code
+description: This package base on country_code_picker, A flutter package for showing a country code selector. In addition it gives the possibility to select a list of favorites countries, as well as to search using a simple searchbox  
+version: 0.0.1
+homepage: https://github.com/JackoPham/tunaf_country_code
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.20.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  modal_bottom_sheet: ^2.0.0
+  universal_platform: ^1.0.0+1
+  tiengviet: ^0.5.0
+  collection: ^1.15.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+  # This section identifies this Flutter project as a plugin project.
+  # The 'pluginClass' and Android 'package' identifiers should not ordinarily
+  # be modified. They are used by the tooling to maintain consistency when
+  # adding or updating assets for this project.
+  plugin:
+    platforms:
+      android:
+        package: tuna.flutter.countrycode.tunaf_country_code
+        pluginClass: TunafCountryCodePlugin
+      ios:
+        pluginClass: TunafCountryCodePlugin
+
+  # To add assets to your plugin package, add an assets section, like this:
+  assets:
+    - flags/
+    - packages/tunaf_country_code/i18n/af.json
+    - packages/tunaf_country_code/i18n/am.json
+    - packages/tunaf_country_code/i18n/ha.json
+    - packages/tunaf_country_code/i18n/ku.json
+    - packages/tunaf_country_code/i18n/ml.json
+    - packages/tunaf_country_code/i18n/no.json
+    - packages/tunaf_country_code/i18n/ps.json
+    - packages/tunaf_country_code/i18n/sd.json
+    - packages/tunaf_country_code/i18n/so.json
+    - packages/tunaf_country_code/i18n/sq.json
+    - packages/tunaf_country_code/i18n/ta.json
+    - packages/tunaf_country_code/i18n/tg.json
+    - packages/tunaf_country_code/i18n/tt.json
+    - packages/tunaf_country_code/i18n/ug.json
+    - packages/tunaf_country_code/i18n/ur.json
+    - packages/tunaf_country_code/i18n/vi.json
+    - packages/tunaf_country_code/i18n/ar.json
+    - packages/tunaf_country_code/i18n/az.json
+    - packages/tunaf_country_code/i18n/be.json
+    - packages/tunaf_country_code/i18n/bg.json
+    - packages/tunaf_country_code/i18n/bn.json
+    - packages/tunaf_country_code/i18n/bs.json
+    - packages/tunaf_country_code/i18n/ca.json
+    - packages/tunaf_country_code/i18n/cs.json
+    - packages/tunaf_country_code/i18n/da.json
+    - packages/tunaf_country_code/i18n/de.json
+    - packages/tunaf_country_code/i18n/el.json
+    - packages/tunaf_country_code/i18n/en.json
+    - packages/tunaf_country_code/i18n/es.json
+    - packages/tunaf_country_code/i18n/et.json
+    - packages/tunaf_country_code/i18n/fa.json
+    - packages/tunaf_country_code/i18n/fi.json
+    - packages/tunaf_country_code/i18n/fr.json
+    - packages/tunaf_country_code/i18n/gl.json
+    - packages/tunaf_country_code/i18n/el.json
+    - packages/tunaf_country_code/i18n/he.json
+    - packages/tunaf_country_code/i18n/hi.json
+    - packages/tunaf_country_code/i18n/hr.json
+    - packages/tunaf_country_code/i18n/hu.json
+    - packages/tunaf_country_code/i18n/hy.json
+    - packages/tunaf_country_code/i18n/id.json
+    - packages/tunaf_country_code/i18n/is.json
+    - packages/tunaf_country_code/i18n/it.json
+    - packages/tunaf_country_code/i18n/ja.json
+    - packages/tunaf_country_code/i18n/ka.json
+    - packages/tunaf_country_code/i18n/kk.json
+    - packages/tunaf_country_code/i18n/km.json
+    - packages/tunaf_country_code/i18n/ko.json
+    - packages/tunaf_country_code/i18n/ky.json
+    - packages/tunaf_country_code/i18n/lt.json
+    - packages/tunaf_country_code/i18n/lv.json
+    - packages/tunaf_country_code/i18n/mk.json
+    - packages/tunaf_country_code/i18n/mn.json
+    - packages/tunaf_country_code/i18n/ms.json
+    - packages/tunaf_country_code/i18n/nb.json
+    - packages/tunaf_country_code/i18n/nl.json
+    - packages/tunaf_country_code/i18n/nn.json
+    - packages/tunaf_country_code/i18n/pl.json
+    - packages/tunaf_country_code/i18n/pt.json
+    - packages/tunaf_country_code/i18n/ro.json
+    - packages/tunaf_country_code/i18n/ru.json
+    - packages/tunaf_country_code/i18n/sk.json
+    - packages/tunaf_country_code/i18n/sl.json
+    - packages/tunaf_country_code/i18n/sr.json
+    - packages/tunaf_country_code/i18n/sv.json
+    - packages/tunaf_country_code/i18n/th.json
+    - packages/tunaf_country_code/i18n/tr.json
+    - packages/tunaf_country_code/i18n/uk.json
+    - packages/tunaf_country_code/i18n/uz.json
+    - packages/tunaf_country_code/i18n/zh.json
+  #
+  # For details regarding assets in packages, see
+  # https://flutter.dev/assets-and-images/#from-packages
+  #
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # To add custom fonts to your plugin package, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts in packages, see
+  # https://flutter.dev/custom-fonts/#from-packages
