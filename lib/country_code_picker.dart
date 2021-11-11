@@ -32,6 +32,8 @@ class CountryCodePicker extends StatefulWidget {
 
   final bool onlyCountryName;
 
+  final Color? searchCursorColor;
+
   final MainAxisSize mainAxisSize;
 
   /// Barrier color of ModalBottomSheet
@@ -127,7 +129,7 @@ class CountryCodePicker extends StatefulWidget {
     this.onlyFlag = false,
     this.onlyCountryName = false,
     this.mainAxisSize = MainAxisSize.min,
-    Key? key,
+    Key? key, this.searchCursorColor,
   }) : super(key: key);
 
   @override
@@ -357,6 +359,7 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
                 hideSearch: widget.hideSearch,
                 closeIcon: widget.closeIcon,
                 flagDecoration: widget.flagDecoration,
+                searchCursorColor: widget.searchCursorColor,
               ),
             ),
           ),

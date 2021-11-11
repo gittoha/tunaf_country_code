@@ -28,6 +28,8 @@ class SelectionDialog extends StatefulWidget {
   /// elements passed as favorite
   final List<CountryCode> favoriteElements;
 
+  final Color? searchCursorColor;
+
   SelectionDialog(
     this.elements,
     this.favoriteElements, {
@@ -45,7 +47,7 @@ class SelectionDialog extends StatefulWidget {
     this.backgroundColor,
     this.barrierColor,
     this.hideSearch = false,
-    this.closeIcon,
+    this.closeIcon, this.searchCursorColor,
   })  : searchDecoration = searchDecoration.prefixIcon == null
             ? searchDecoration.copyWith(prefixIcon: const Icon(Icons.search))
             : searchDecoration,
@@ -101,6 +103,7 @@ class _SelectionDialogState extends State<SelectionDialog> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: TextField(
+                    cursorColor: widget.searchCursorColor,
                     style: widget.searchStyle,
                     decoration: widget.searchDecoration,
                     onChanged: _filterElements,
