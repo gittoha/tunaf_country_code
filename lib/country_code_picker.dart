@@ -28,6 +28,12 @@ class CountryCodePicker extends StatefulWidget {
   final TextOverflow textOverflow;
   final Icon closeIcon;
 
+  final bool onlyFlag;
+
+  final bool onlyCountryName;
+
+  final MainAxisSize mainAxisSize;
+
   /// Barrier color of ModalBottomSheet
   final Color? barrierColor;
 
@@ -118,6 +124,9 @@ class CountryCodePicker extends StatefulWidget {
     this.dialogBackgroundColor,
     this.closeIcon = const Icon(Icons.close),
     this.countryList = codes,
+    this.onlyFlag = false,
+    this.onlyCountryName = false,
+    this.mainAxisSize = MainAxisSize.min,
     Key? key,
   }) : super(key: key);
 
@@ -162,66 +171,85 @@ class _CountryCodePickerState extends State<CountryCodePicker> {
         onTap: showCountryCodePickerDialog,
         child: widget.builder!(selectedItem),
       );
-    } else {
-      _widget = TextButton(
-        onPressed: widget.enabled ? showCountryCodePickerDialog : null,
-        child: Padding(
-          padding: widget.padding,
-          child: Flex(
-            direction: Axis.horizontal,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              if (widget.showFlagMain != null
-                  ? widget.showFlagMain!
-                  : widget.showFlag)
-                Flexible(
-                  flex: widget.alignLeft ? 0 : 1,
-                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                  child: Container(
-                    clipBehavior: widget.flagDecoration == null
-                        ? Clip.none
-                        : Clip.hardEdge,
-                    decoration: widget.flagDecoration,
-                    margin: widget.alignLeft
-                        ? const EdgeInsets.only(right: 16.0, left: 8.0)
-                        : const EdgeInsets.only(right: 16.0),
-                    child: Image.asset(
-                      selectedItem!.flagUri!,
-                      package: 'tunaf_country_code',
-                      width: widget.flagWidth,
-                    ),
-                  ),
-                ),
-              if (!widget.hideMainText)
-                Flexible(
-                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                  child: Text(
-                    widget.showOnlyCountryWhenClosed
-                        ? selectedItem!.toCountryStringOnly()
-                        : selectedItem.toString(),
-                    style:
-                        widget.textStyle ?? Theme.of(context).textTheme.button,
-                    overflow: widget.textOverflow,
-                  ),
-                ),
-              if (widget.showDropDownButton)
-                Flexible(
-                  flex: widget.alignLeft ? 0 : 1,
-                  fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
-                  child: Padding(
-                      padding: widget.alignLeft
-                          ? const EdgeInsets.only(right: 16.0, left: 8.0)
-                          : const EdgeInsets.only(right: 16.0),
-                      child: Icon(
-                        Icons.arrow_drop_down,
-                        color: Colors.grey,
-                        size: widget.flagWidth,
-                      )),
-                ),
-            ],
-          ),
+    } else if (widget.onlyFlag) {
+      _widget = Container(
+        clipBehavior: widget.flagDecoration == null ? Clip.none : Clip.hardEdge,
+        decoration: widget.flagDecoration,
+        child: Image.asset(
+          selectedItem!.flagUri!,
+          package: 'tunaf_country_code',
+          width: widget.flagWidth,
         ),
       );
+    } else if (widget.onlyCountryName) {
+      return Text(
+        selectedItem!.toCountryStringOnly(),
+        style: widget.textStyle ?? Theme.of(context).textTheme.button,
+        overflow: widget.textOverflow,
+      );
+    } else {
+      _widget = TextButton(
+          onPressed: widget.enabled ? showCountryCodePickerDialog : null,
+          child: Row(
+            children: [
+              Padding(
+                padding: widget.padding,
+                child: Flex(
+                  direction: Axis.horizontal,
+                  mainAxisSize: widget.mainAxisSize,
+                  children: <Widget>[
+                    if (widget.showFlagMain != null
+                        ? widget.showFlagMain!
+                        : widget.showFlag)
+                      Flexible(
+                        flex: widget.alignLeft ? 0 : 1,
+                        fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                        child: Container(
+                          clipBehavior: widget.flagDecoration == null
+                              ? Clip.none
+                              : Clip.hardEdge,
+                          decoration: widget.flagDecoration,
+                          margin: widget.alignLeft
+                              ? const EdgeInsets.only(right: 16.0, left: 8.0)
+                              : const EdgeInsets.only(right: 16.0),
+                          child: Image.asset(
+                            selectedItem!.flagUri!,
+                            package: 'tunaf_country_code',
+                            width: widget.flagWidth,
+                          ),
+                        ),
+                      ),
+                    if (!widget.hideMainText)
+                      Flexible(
+                        fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                        child: Text(
+                          widget.showOnlyCountryWhenClosed
+                              ? selectedItem!.toCountryStringOnly()
+                              : selectedItem.toString(),
+                          style: widget.textStyle ??
+                              Theme.of(context).textTheme.button,
+                          overflow: widget.textOverflow,
+                        ),
+                      ),
+                    if (widget.showDropDownButton)
+                      Flexible(
+                        flex: widget.alignLeft ? 0 : 1,
+                        fit: widget.alignLeft ? FlexFit.tight : FlexFit.loose,
+                        child: Padding(
+                            padding: widget.alignLeft
+                                ? const EdgeInsets.only(right: 16.0, left: 8.0)
+                                : const EdgeInsets.only(right: 16.0),
+                            child: Icon(
+                              Icons.arrow_drop_down,
+                              color: Colors.grey,
+                              size: widget.flagWidth,
+                            )),
+                      ),
+                  ],
+                ),
+              ),
+            ],
+          ));
     }
     return _widget;
   }
